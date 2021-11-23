@@ -1,0 +1,27 @@
+{
+    "name":"cp-calendar",
+    "version":"0.1.0",
+    "manifest_version":2,
+    "description":"Calendar for all the upcoming contests on different competitive programming platforms like Codeforces, Codechef, Leetcode, etc.",
+    "icons": {
+        "16": "./images/timetable-1.png",
+        "48": "./images/timetable-2.png",
+        "128": "./images/timetable-3.png",
+        "256": "./images/timetable-4.png",
+        "512": "./images/timetable-5.png"
+    },
+    "browser_action":{
+        "default_popup":"",
+        "default_icon":{
+            "16": "./images/timetable-1.png",
+            "48": "./images/timetable-2.png",
+            "128": "./images/timetable-3.png",
+            "256": "./images/timetable-4.png",
+            "512": "./images/timetable-5.png"
+        },
+        "default_title":"cp-calendar"
+    },
+    "permissions":[
+        "activeTab"
+    ]
+}
