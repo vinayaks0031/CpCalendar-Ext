@@ -3,10 +3,11 @@
 body{
     margin: 0%;
     padding: 0%;
-    width: 305px;
+    width: 330px;
     text-align: center;
     font-size: 17px;
-    background-image: linear-gradient(189deg, #fafcff 18%, rgb(37, 36, 36) 18%) ;
+    background-image: linear-gradient(189deg, #fafcff 30%, rgb(37, 36, 36) 30%) ;
+    min-height:550px ;
 }
 ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -43,7 +44,7 @@ body{
     justify-content: center;
 }
 .hashtags > p{
-    margin-top: 5px;
+    margin-top: 10px;
     padding-left:10px ;
     font-family: 'Cormorant', serif;
     cursor: pointer;
@@ -66,4 +67,8 @@ body{
 }
 .style-Button{
     font-size: 14px !important;
+}
+abbr{
+    text-decoration: none !important;
+    cursor: pointer !important;
 }

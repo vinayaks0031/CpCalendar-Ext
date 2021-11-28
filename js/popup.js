@@ -1,12 +1,56 @@
 showData();
 
-async function getContestData() {
-  const response = await fetch("../html/data.json");
+async function getContestData() { //fetching Data from backEnd
+  const response = await fetch("https://api-cpcalender.herokuapp.com/getContestData");
   const data =await response.json();
   return data;
 }
 
-async function showData() {
+document.addEventListener('click', function (e) { //function for sorting LeetCode Data
+  if (e.target.matches('.showLeetcode')) {
+      document.querySelector("h2").innerText="Leetcode Contest";
+      let cards=document.getElementsByClassName("event_card");
+      Array.from(cards).forEach((e)=>{
+        if(e.dataset.key=="Leetcode") e.style.display="block";
+        else e.style.display="none";
+      })
+  }
+});
+
+document.addEventListener('click', function (e) { //function for sorting CodrChef Data
+  if (e.target.matches('.showCodechef')) {
+      document.querySelector("h2").innerText="Codechef Contest";
+      let cards=document.getElementsByClassName("event_card");
+      Array.from(cards).forEach((e)=>{
+        if(e.dataset.key=="Codechef") e.style.display="block";
+        else e.style.display="none";
+      })
+  }
+});
+
+document.addEventListener('click', function (e) {//function for sorting CodeForces Data
+  if (e.target.matches('.showCodeforces')) {
+      document.querySelector("h2").innerText="Codeforces Contest";
+      let cards=document.getElementsByClassName("event_card");
+      Array.from(cards).forEach((e)=>{
+        if(e.dataset.key=="Codeforces") e.style.display="block";
+        else e.style.display="none";
+      })
+  }
+});
+
+document.addEventListener('click', function (e) { //funtion of show all Data
+  if (e.target.matches('.allContest')){
+    document.querySelector("h2").innerText="All Contest";
+    let cards=document.getElementsByClassName("event_card");
+    Array.from(cards).forEach((e)=>{
+      e.style.display="block";
+    })
+  }
+});
+
+async function showData() { 
+  //Displaying Loader in popup
   let loader = `  <div class="container min-vh-100 d-flex align-items-center justify-content-center flex-column">
     <div>
       <div class="spinner-grow text-white mx-2" role="status"></div>
@@ -20,11 +64,18 @@ async function showData() {
     </div>
   </div>`
   document.getElementById("contest-data").innerHTML = loader;
-  let cards = "";
+  //Displaying all the contests 
+  let cards = `<div class="hashtags">
+  <p class="allContest">#All</p>
+  <p class="showCodechef">#CodeCafe</p>
+  <p class="showCodeforces">#CodeForces</p>
+  <p class="showLeetcode">#LeetCode</p>
+</div>
+<h2 style="font-family: 'Cormorant', serif;">All Contest</h2>`;
   const a = await getContestData();
   let contestData = a.contests;
   contestData.forEach((e) => {
-    cards += `<div data-key=${e.platform} class="event_card p-2 m-md-2 mx-3 my-3 rounded" style="background-color: ${e.hex_color} ; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;font-size:14px;">
+    cards += `<div data-key=${e.platform} class="event_card p-2 m-md-2 mx-3 my-3 rounded" style="background-color: ${e.hex_color} ;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;font-size:14px;">
           <div class="d-flex align-items-center justify-content-center row">
           <div class="col-2">
           <img src=${e.platform === "Codechef" ? "../images/codechef.svg" : e.platform === "Leetcode" ? "../images/leetcode.svg" : "../images/codeforces.png"} class="style-icon" alt="event" />
