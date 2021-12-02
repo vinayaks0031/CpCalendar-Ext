@@ -1,55 +1,63 @@
 showData();
 
+
+
 async function getContestData() { //fetching Data from backEnd
-  const response = await fetch("https://api-cpcalender.herokuapp.com/getContestData");
-  const data =await response.json();
+  const url_1 = "https://api-cpcalendar.herokuapp.com/getContestData";
+  const url_2 = "https://api-cpcalender.herokuapp.com/getContestData";
+  let date = new Date().getDate();
+  let main_url = url_1;
+  if (date >= 15)
+    main_url = url_2;
+  const response = await fetch(main_url);
+  const data = await response.json();
   return data;
 }
 
 document.addEventListener('click', function (e) { //function for sorting LeetCode Data
   if (e.target.matches('.showLeetcode')) {
-      document.querySelector("h2").innerText="Leetcode Contest";
-      let cards=document.getElementsByClassName("event_card");
-      Array.from(cards).forEach((e)=>{
-        if(e.dataset.key=="Leetcode") e.style.display="block";
-        else e.style.display="none";
-      })
+    document.querySelector("h2").innerText = "Leetcode Contest";
+    let cards = document.getElementsByClassName("event_card");
+    Array.from(cards).forEach((e) => {
+      if (e.dataset.key == "Leetcode") e.style.display = "block";
+      else e.style.display = "none";
+    })
   }
 });
 
 document.addEventListener('click', function (e) { //function for sorting CodrChef Data
   if (e.target.matches('.showCodechef')) {
-      document.querySelector("h2").innerText="Codechef Contest";
-      let cards=document.getElementsByClassName("event_card");
-      Array.from(cards).forEach((e)=>{
-        if(e.dataset.key=="Codechef") e.style.display="block";
-        else e.style.display="none";
-      })
+    document.querySelector("h2").innerText = "Codechef Contest";
+    let cards = document.getElementsByClassName("event_card");
+    Array.from(cards).forEach((e) => {
+      if (e.dataset.key == "Codechef") e.style.display = "block";
+      else e.style.display = "none";
+    })
   }
 });
 
 document.addEventListener('click', function (e) {//function for sorting CodeForces Data
   if (e.target.matches('.showCodeforces')) {
-      document.querySelector("h2").innerText="Codeforces Contest";
-      let cards=document.getElementsByClassName("event_card");
-      Array.from(cards).forEach((e)=>{
-        if(e.dataset.key=="Codeforces") e.style.display="block";
-        else e.style.display="none";
-      })
-  }
-});
-
-document.addEventListener('click', function (e) { //funtion of show all Data
-  if (e.target.matches('.allContest')){
-    document.querySelector("h2").innerText="All Contest";
-    let cards=document.getElementsByClassName("event_card");
-    Array.from(cards).forEach((e)=>{
-      e.style.display="block";
+    document.querySelector("h2").innerText = "Codeforces Contest";
+    let cards = document.getElementsByClassName("event_card");
+    Array.from(cards).forEach((e) => {
+      if (e.dataset.key == "Codeforces") e.style.display = "block";
+      else e.style.display = "none";
     })
   }
 });
 
-async function showData() { 
+document.addEventListener('click', function (e) { //funtion of show all Data
+  if (e.target.matches('.allContest')) {
+    document.querySelector("h2").innerText = "All Contest";
+    let cards = document.getElementsByClassName("event_card");
+    Array.from(cards).forEach((e) => {
+      e.style.display = "block";
+    })
+  }
+});
+
+async function showData() {
   //Displaying Loader in popup
   let loader = `  <div class="container min-vh-100 d-flex align-items-center justify-content-center flex-column">
     <div>
@@ -106,7 +114,6 @@ async function showData() {
           Contest page &#x3e;
           </button>
           </a>
-
           </div>
           </div>
           </div>`;
