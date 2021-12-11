@@ -6,7 +6,7 @@ It is a Mini Version of [CpCalendar](https://cpcalendar.netlify.app/).
 
 ## Add extension in your chrome
 
-The extension is available at the chrome web store ([Click here]()). Please make sure to add the extension to your browser it'll help you a lot in your coding journey😃.
+The extension is available at the Edge AddOns ([Click here](https://microsoftedge.microsoft.com/addons/detail/cpcalendar/iffkianaapnlkhljpldhhphoeljkljjb)). Please make sure to add the extension to your browser it'll help you a lot in your coding journey😃.
 
 ## How to use
 
