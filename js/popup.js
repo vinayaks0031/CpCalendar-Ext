@@ -1,7 +1,5 @@
 showData();
 
-
-
 async function getContestData() { //fetching Data from backEnd
   const url_1 = "https://api-cpcalendar.herokuapp.com/getContestData";
   const url_2 = "https://api-cpcalender.herokuapp.com/getContestData";
@@ -57,6 +55,34 @@ document.addEventListener('click', function (e) { //funtion of show all Data
   }
 });
 
+
+function handleGoogleCalendar({ title, start, end, start_time, end_time, link, platform }) {
+
+  var base_url = "https://calendar.google.com/calendar/u/0/r/eventedit?text=";
+  var contest_name = title.trim();
+  var details = `%5B${platform}%5D - ${title}`;
+  var start_date = new Date(`${start} ${start_time}`);
+  var end_date = new Date(`${end} ${end_time}`);
+
+  start_date.setHours(start_date.getHours() + 5);
+  start_date.setMinutes(start_date.getMinutes() + 30);
+  end_date.setHours(end_date.getHours() + 5);
+  end_date.setMinutes(end_date.getMinutes() + 30);
+  start_date = start_date.toISOString();
+  end_date = end_date.toISOString();
+
+  start_date = start_date.slice(0, 10).replaceAll('-', '') + start_date.slice(10, 19).replaceAll(':', '')
+  end_date = end_date.slice(0, 10).replaceAll('-', '') + end_date.slice(10, 19).replaceAll(':', '');
+
+  contest_name = contest_name.replaceAll('#', '%23')
+  details = details.replaceAll('#', '%23')
+
+  var calendar_url = `${base_url}${contest_name}&location=${link}&details=${details}&dates=${start_date}/${end_date}&trp=false&sf=true`;
+  return calendar_url;
+  // window.open(calendar_url, '_blank', 'noopener , noreferrer');
+}
+
+
 async function showData() {
   //Displaying Loader in popup
   let loader = `  <div class="container min-vh-100 d-flex align-items-center justify-content-center flex-column">
@@ -107,14 +133,20 @@ async function showData() {
           </div>
           </div>
           </div>
-          <div class="col-10 d-flex flex-column align-items-center justify-content-center" style=${e.platform === "Leetcode" ? `color: #8B0000;` : `color: white;`}>
 
+          <div class="col-10 d-flex  align-items-center justify-content-center" style=${e.platform === "Leetcode" ? `color: #8B0000;` : `color: white;`}>
           <a href="${e.link}" style="text-decoration:none; color:white;" target="_blank">
           <button class="btn btn-danger m-2 style-Button" >
           Contest page &#x3e;
           </button>
           </a>
+          <a href="${handleGoogleCalendar(e)}" style="text-decoration:none; color:white;" target="_blank">
+          <button class="btn btn-primary m-2 style-Button">
+          <abbr title="Add to Google Calendar">🗓️</abbr>
+          </button>
+          </a>
           </div>
+
           </div>
           </div>`;
   });

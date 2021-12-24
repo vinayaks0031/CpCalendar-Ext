@@ -72,3 +72,8 @@ abbr{
     text-decoration: none !important;
     cursor: pointer !important;
 }
+.btn-primary{
+    border: none !important;
+    font-size: 20px !important;
+    padding: 2px 5px !important;
+}
