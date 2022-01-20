@@ -79,7 +79,6 @@ function handleGoogleCalendar({ title, start, end, start_time, end_time, link, p
 
   var calendar_url = `${base_url}${contest_name}&location=${link}&details=${details}&dates=${start_date}/${end_date}&trp=false&sf=true`;
   return calendar_url;
-  // window.open(calendar_url, '_blank', 'noopener , noreferrer');
 }
 
 

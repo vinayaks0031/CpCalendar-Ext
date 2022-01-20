@@ -1,7 +1,7 @@
 {
-    "name":"cp-calendar",
-    "version":"0.2.0",
-    "manifest_version":2,
+    "name":"Contest Calendar",
+    "version":"0.1.1",
+    "manifest_version":3,
     "description":"Calendar for all the upcoming contests on different competitive programming platforms like Codeforces, Codechef, Leetcode, etc.",
     "icons": {
         "16": "./images/timetable-1.png",
@@ -9,7 +9,7 @@
         "128": "./images/timetable-3.png",
         "256": "./images/timetable-4.png"
     },
-    "browser_action":{
+    "action":{
         "default_popup":"html/popup.html",
         "default_icon":{
             "16": "./images/timetable-1.png",
@@ -18,9 +18,6 @@
             "256": "./images/timetable-4.png"
         },
         "default_title":"cp-calendar"
-    },
-    "permissions":[
-        "activeTab"
-    ],
-    "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net;  object-src 'self'"
+    }
+    
 }
