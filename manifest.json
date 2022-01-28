@@ -1,6 +1,6 @@
 {
     "name":"Contest Calendar",
-    "version":"0.1.1",
+    "version":"0.1.2",
     "manifest_version":3,
     "description":"Calendar for all the upcoming contests on different competitive programming platforms like Codeforces, Codechef, Leetcode, etc.",
     "icons": {

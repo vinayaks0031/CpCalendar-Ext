@@ -100,7 +100,7 @@ async function showData() {
   //Displaying all the contests 
   let cards = `<div class="hashtags">
   <p class="allContest">#All</p>
-  <p class="showCodechef">#CodeCafe</p>
+  <p class="showCodechef">#CodeChef</p>
   <p class="showCodeforces">#CodeForces</p>
   <p class="showLeetcode">#LeetCode</p>
 </div>
